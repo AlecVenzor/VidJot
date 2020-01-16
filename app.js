@@ -18,11 +18,11 @@ const users = require("./routes/users")
 require('./config/passport')(passport)
 
 // DB Config
-// const db = require('./config/database')
+const db = require('./config/database')
 // Map Global promise - get rid of warning
 mongoose.Promise = global.Promise;
 // Connect to mongoose
-mongoose.connect("mongodb+srv://test:test@vidjot-jn7qd.gcp.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true })
+mongoose.connect(db.mongoURI,{ useNewUrlParser: true })
 .then(()=>console.log('MongoDB Connected...'))
 .catch(err => console.log(err));
 // Flash MiddleWare
