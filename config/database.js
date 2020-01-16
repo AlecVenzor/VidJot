@@ -1,5 +1,5 @@
 
-    module.exports = {mongoURI: "mongodb+srv://Alec:Alec@vidjot-jn7qd.gcp.mongodb.net/test?retryWrites=true&w=majority"}
+    module.exports = {mongoURI: "mongodb+srv://test:test@vidjot-jn7qd.gcp.mongodb.net/test?retryWrites=true&w=majority"}
 
 // else
 // {
