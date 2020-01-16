@@ -21,10 +21,20 @@ require('./config/passport')(passport)
 const db = require('./config/database')
 // Map Global promise - get rid of warning
 mongoose.Promise = global.Promise;
+// connect to mongoose round 2 
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = db;
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 // Connect to mongoose
-mongoose.connect(db.mongoURI,{ useNewUrlParser: true })
-.then(()=>console.log('MongoDB Connected...'))
-.catch(err => console.log(err));
+// mongoose.connect(db.mongoURI,{ useNewUrlParser: true })
+// .then(()=>console.log('MongoDB Connected...'))
+// .catch(err => console.log(err));
 // Flash MiddleWare
 app.use(flash());
 // Express Session Middleware
